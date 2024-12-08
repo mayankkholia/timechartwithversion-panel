@@ -5,3 +5,4 @@ datasources:
     type: prometheus
     uid: de68y0c8zi5mob
     isDefault: true
+    url: http://prometheus:9090

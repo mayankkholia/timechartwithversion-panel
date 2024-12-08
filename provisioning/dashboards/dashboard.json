@@ -50,7 +50,7 @@
             "uid": "de68y0c8zi5mob"
           },
           "editorMode": "code",
-          "expr": "sum by (version,labelA)(perf_latency{})",
+          "expr": "avg by (version,metric,metric_descriptor)(perf_latency{metric='metricE',metric_descriptor='min'})",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,

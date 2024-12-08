@@ -46,11 +46,11 @@ const TimeChartWithVersion = ({ data, height, width }) => {
     const gX = svg
       .append('g')
       .attr('transform', `translate(${margin.left},${height - margin.top})`)
-      .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat('%Y-%m-%d')).ticks(d3.timeMin, 1));
+      .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat('%H:%M:%S')).ticks(d3.timeMin, 1));
 
     const gY = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`).call(d3.axisLeft(yScale));
-
-    const circles = svg
+    
+    svg
       .selectAll('circle')
       .data(series)
       .enter()
