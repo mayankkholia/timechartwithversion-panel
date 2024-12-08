@@ -22,3 +22,18 @@ services:
       GF_LOG_LEVEL: debug
       GF_DATAPROXY_LOGGING: 1
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: someone-timechartwithversion-panel
+  prometheus:
+    user: root
+    container_name: "prometheus-server"
+    image: prom/prometheus
+    ports:
+      - 9090:9090/tcp
+    volumes:
+      - /etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    
+  pushgateway:
+    user: root
+    container_name: "pushgateway"
+    image: prom/pushgateway
+    ports:
+      - 9091:9091/tcp

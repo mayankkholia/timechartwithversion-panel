@@ -1,7 +1,7 @@
 apiVersion: 1
 
 datasources:
-  - name: TestData DB
-    type: testdata
-    uid: trlxrdZVk
+  - name: prometheus
+    type: prometheus
+    uid: de68y0c8zi5mob
     isDefault: true
