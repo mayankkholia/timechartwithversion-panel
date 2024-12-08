@@ -1,3 +1,5 @@
+import { abort } from "process";
+
 function getRandomColor() {
     let r, g, b;
     
@@ -26,6 +28,7 @@ const filter_by_key = (object_to_filter, key_to_filter) => {
 export const combine_grouped_data = (grouped_data) => {
   let combined_data = [];
   for (const series of grouped_data) {
+    let series_data = []
     for (let k = 0; k < series.length; k++) {
       let raw = series[k].fields;
       const field_names = series[0].fields.map((field) => field.name);
@@ -35,11 +38,16 @@ export const combine_grouped_data = (grouped_data) => {
           temp_dict['labels'] = raw[j].labels;
           temp_dict[raw[j].name] = raw[j].values[i];
         }
-        combined_data.push(temp_dict);
+        series_data.push(temp_dict);
       }
     }
+    series_data = series_data.sort((a,b)=>{
+      return a.Time - b.Time;
+    })
+    combined_data.push(series_data);
   }
-  return combined_data;
+  console.log("combined_data",combined_data)
+  return combined_data
 };
 
 export const groupseries = (series, version_label) => {
