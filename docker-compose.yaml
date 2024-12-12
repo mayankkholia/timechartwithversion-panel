@@ -1,7 +1,7 @@
 services:
   grafana:
     user: root
-    container_name: 'someone-timechartwithversion-panel'
+    container_name: 'mayankkholia1-timechartwithversion-panel'
 
     build:
       context: ./.config
@@ -12,16 +12,16 @@ services:
     ports:
       - 3000:3000/tcp
     volumes:
-      - ./dist:/var/lib/grafana/plugins/someone-timechartwithversion-panel
+      - ./dist:/var/lib/grafana/plugins/mayankkholia1-timechartwithversion-panel
       - ./provisioning:/etc/grafana/provisioning
-      - .:/root/someone-timechartwithversion-panel
+      - .:/root/mayankkholia1-timechartwithversion-panel
 
     environment:
       NODE_ENV: development
-      GF_LOG_FILTERS: plugin.someone-timechartwithversion-panel:debug
+      GF_LOG_FILTERS: plugin.mayankkholia1-timechartwithversion-panel:debug
       GF_LOG_LEVEL: debug
       GF_DATAPROXY_LOGGING: 1
-      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: someone-timechartwithversion-panel
+      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: mayankkholia1-timechartwithversion-panel
   prometheus:
     user: root
     container_name: "prometheus-server"

@@ -180,7 +180,7 @@ jobs:
       - name: Docker logs
         if: ${{ always() && steps.run-tests.outcome == 'failure' }}
         run: |
-          docker logs someone-timechartwithversion-panel >& grafana-server.log
+          docker logs mayankkholia1-timechartwithversion-panel >& grafana-server.log
 
       - name: Stop grafana docker
         run: docker compose down

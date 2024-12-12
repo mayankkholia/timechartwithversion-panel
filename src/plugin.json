@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
   "name": "Timechartwithversion",
-  "id": "someone-timechartwithversion-panel",
+  "id": "mayankkholia1-timechartwithversion-panel",
   "info": {
     "keywords": ["panel"],
     "description": "",
     "author": {
-      "name": "Someone"
+      "name": "mayankkholia1"
     },
     "logos": {
       "small": "img/logo.svg",
