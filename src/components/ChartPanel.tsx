@@ -1,5 +1,5 @@
 import React from 'react';
-import { PanelProps } from '@grafana/data';
+import { PanelData, PanelProps } from '@grafana/data';
 import { SimpleOptions } from 'types';
 import { PanelDataErrorView } from '@grafana/runtime';
 import TimeChartWithVersion from './TimeChartWithVersion.jsx';
@@ -7,9 +7,9 @@ import {groupseries,combine_grouped_data} from '../utils.js'
 
 interface Props extends PanelProps<SimpleOptions> {}
 
-const parse_data = (data, options) => {
-  let grouped_data = groupseries(data.series,options.version)
-  grouped_data = combine_grouped_data(grouped_data)
+const parse_data = (data: PanelData, options: SimpleOptions) => {
+  let grouped_data = groupseries(data.series, options.version);
+  grouped_data = combine_grouped_data(grouped_data);
   return {
     from_ts: data.timeRange.from,
     to_ts: data.timeRange.to,

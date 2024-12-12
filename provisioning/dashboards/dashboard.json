@@ -31,8 +31,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 13,
-        "w": 23,
+        "h": 11,
+        "w": 12,
         "x": 0,
         "y": 0
       },
@@ -40,7 +40,8 @@
       "options": {
         "seriesCountSize": "sm",
         "showSeriesCount": false,
-        "text": "Default value of text input option"
+        "text": "Default value of text input option",
+        "version": "version"
       },
       "pluginVersion": "1.0.0",
       "targets": [
@@ -50,7 +51,7 @@
             "uid": "de68y0c8zi5mob"
           },
           "editorMode": "code",
-          "expr": "avg by (version,metric,metric_descriptor)(perf_latency{metric='metricE',metric_descriptor='min'})",
+          "expr": "avg by (version,metric,metric_descriptor)(perf_latency{metric=~'$metric_name',metric_descriptor=~\"$metric_descriptor\"})",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -66,7 +67,55 @@
   "schemaVersion": 40,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "text": [
+            "metricA"
+          ],
+          "value": [
+            "metricA"
+          ]
+        },
+        "definition": "label_values(perf_latency,metric)",
+        "description": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "metric_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(perf_latency,metric)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "definition": "label_values(metric_descriptor)",
+        "includeAll": true,
+        "multi": true,
+        "name": "metric_descriptor",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(metric_descriptor)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",

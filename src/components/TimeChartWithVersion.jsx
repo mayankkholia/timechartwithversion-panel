@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, useTheme2 } from '@grafana/ui';
 import * as d3 from 'd3';
 
 import { generateRandomColorArray } from 'utils';
@@ -9,16 +8,15 @@ const TimeChartWithVersion = ({ data, height, width }) => {
 
   const svgRef = useRef();
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, data: {} });
-
-  const theme = useTheme2();
-  const palette = theme.visualization.palette;
+  const from_ts = new Date(data.from_ts);
+  const to_ts = new Date(data.to_ts);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
     const margin = { top: 20, right: 20, bottom: 20, left: 20 };
     const width1 = width - margin.left - margin.right;
     const height1 = height - margin.top - margin.bottom;
-
+    
     const xScale = d3
       .scaleTime()
       .domain(d3.extent(series[0], (d) => new Date(d.Time)))
@@ -30,11 +28,11 @@ const TimeChartWithVersion = ({ data, height, width }) => {
       .range([height1, 0]);
 
     svg.selectAll('*').remove(); // Clear previous content
-
+    const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
     const gX = svg
       .append('g')
       .attr('transform', `translate(${margin.left},${height - margin.top})`)
-      .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat('%H:%M:%S')).ticks(d3.timeMin, 1));
+      .call(d3.axisBottom(xScale).tickFormat(timeFormat).ticks(tickSize, tickInterval));
 
     const gY = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`).call(d3.axisLeft(yScale));
 

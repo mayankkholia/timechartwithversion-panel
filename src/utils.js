@@ -62,3 +62,10 @@ export const groupseries = (series, version_label) => {
   }
   return Object.values(grouped);
 };
+
+export const getTickSize = (fromTs,toTs) => {
+  const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+  if(toTs - fromTs > oneDayInMilliseconds * 7){
+
+  }
+}
