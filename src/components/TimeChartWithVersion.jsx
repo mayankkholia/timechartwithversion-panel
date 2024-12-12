@@ -79,7 +79,7 @@ const TimeChartWithVersion = ({ data, height, width }) => {
     return () => {
       svg.selectAll('*').remove();
     };
-  }, [data, height, width]);
+  }, );
 
   return (
     <div>
