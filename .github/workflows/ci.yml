@@ -80,7 +80,7 @@ jobs:
           fi
 
       - name: Sign plugin
-        run: npm run sign --rootUrls https://mayankkholia1.grafana.net/
+        run: npx @grafana/sign-plugin@latest  --rootUrls https://mayankkholia1.grafana.net/ 
         if: ${{ env.GRAFANA_ACCESS_POLICY_TOKEN != '' }}
 
       - name: Get plugin metadata
