@@ -29,7 +29,7 @@ services:
     ports:
       - 9090:9090/tcp
     volumes:
-      - extra/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./extra/prometheus.yml:/etc/prometheus/prometheus.yml
     
   pushgateway:
     user: root
